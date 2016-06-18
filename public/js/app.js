@@ -1,4 +1,4 @@
-var dashboardApp = angular.module('dashboardApp', ['ngRoute', 'ngResource']);
+var dashboardApp = angular.module('dashboardApp', ['ngRoute', 'ngResource', 'zingchart-angularjs']);
 
 
 
@@ -19,62 +19,48 @@ dashboardApp.controller('issuesController', ['$scope',  '$resource', function($s
 	console.log($scope.issuesResult);
 }])
 
-dashboardApp.controller('keyMetricsController',  [ '$scope', '$resource', '$routeParams', "$http", function($scope, $resource, $routeParams, $http){
- //  	$scope.orderByField = 'closed_timestamp';
- //  	$scope.reverseSort = false;
-
- //    $scope.keyMetricsAPI = $resource("https://corporate-dashboard.firebaseio.com/key_metrics.json", { get: { method: "JSON" }});
-
-
-	// $scope.keyMetricsResult = $scope.keyMetricsAPI.query({});
-
-	// console.log($scope.keyMetricsResult)
-
-	var array = [];
-
-
-
-    $http.get("https://corporate-dashboard.firebaseio.com/key_metrics.json")
-    .then(function(response) {
-
-
-        console.log(response.data);
-
-        for (x in response.data){
-        	var nestedArray = [];
-        	nestedArray.push(response.data[x].date);
-        	nestedArray.push(response.data[x].number_of_paying_customers);
-        	array.push(nestedArray);
-//         	console.log(response.data[x].date + " , "  + response.data[x].number_of_paying_customers
-// );
-        }
-    });
-
-google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawBasic);
-
-function drawBasic() {
-
-      var data = new google.visualization.DataTable();
-      data.addColumn('date', 'X');
-      data.addColumn('number', 'Dogs');
-
-      data.addRows(array);
-
-      var options = {
-        hAxis: {
-          title: 'Time'
-        },
-        vAxis: {
-          title: 'Popularity'
-        }
-      };
-
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-      chart.draw(data, options);
+var cities = [
+    {
+        city : 'Toronto',
+        desc : 'This is the best city in the world!',
+        lat : 43.7000,
+        long : -79.4000
+    },
+    {
+        city : 'New York',
+        desc : 'This city is aiiiiite!',
+        lat : 40.6700,
+        long : -73.9400
+    },
+    {
+        city : 'Chicago',
+        desc : 'This is the second best city in the world!',
+        lat : 41.8819,
+        long : -87.6278
+    },
+    {
+        city : 'Los Angeles',
+        desc : 'This city is live!',
+        lat : 34.0500,
+        long : -118.2500
+    },
+    {
+        city : 'Las Vegas',
+        desc : 'Sin City...\'nuff said!',
+        lat : 36.0800,
+        long : -115.1522
     }
+];
+
+
+dashboardApp.controller('employeesController', ['$scope',  '$resource', '$window', function($scope, $resource, $window){
+
+
+
+
 }])
+
+
 
 dashboardApp.directive("weatherReport", function(){
 	return {

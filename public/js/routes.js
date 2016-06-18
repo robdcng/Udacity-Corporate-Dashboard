@@ -4,12 +4,16 @@ dashboardApp.config(function($routeProvider){
 		templateUrl: '/assets/js/pages/home.htm', 
 		controller: 'issuesController'
 	})
-	.when('/forecast', {
+	.when('/keyMetrics', {
 		templateUrl: '/assets/js/pages/key_metrics.htm', 
 		controller: 'keyMetricsController'
 	})
 	.when('/forecast/:days', {
 		templateUrl: '/assets/js/pages/forecast.htm', 
 		controller: 'forecastController'
+	})
+	.when('/employees', {
+		templateUrl: '/assets/js/pages/employees.htm', 
+		controller: 'employeesController'
 	})
 })

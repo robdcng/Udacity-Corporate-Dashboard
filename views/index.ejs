@@ -15,14 +15,27 @@
         </style>
         
         <!-- load angular via CDN -->
-
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2XwcN4H6Dp7ZdOzxPMBf6ZLqFoS2xQ90"
+         async defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.6/angular-messages.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.js"></script>
+        
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <script src = "https://cdn.zingchart.com/zingchart.min.js" ></script>  
+        <script src = "https://cdn.zingchart.com/angular/zingchart-angularjs.js" ></script>  
+
         <script src="/assets/js/app.js"></script>
         <script src="/assets/js/routes.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="/assets/js/keyMetricsController.js"></script>
+
+     
     </head>
     <body>
 
@@ -37,10 +50,10 @@
                     <li><a href="#/"><i class="fa fa-home"></i> Issues </a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/forecast"><i class="fa fa-home"></i> Key Metrics </a></li>
+                    <li><a href="#/keyMetrics"><i class="fa fa-home"></i> Key Metrics </a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/forecast"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#/employees"><i class="fa fa-home"></i> Employees</a></li>
                 </ul>
             </div>
             </nav>
