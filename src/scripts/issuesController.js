@@ -1,7 +1,3 @@
-var dashboardApp = angular.module('dashboardApp', ['ngRoute', 'ngResource', 'zingchart-angularjs', 'uiGmapgoogle-maps']);
-
-
-
 dashboardApp.controller('issuesController', ['$scope',  '$resource', function($scope, $resource){
 
   	$scope.orderByField = 'closed_timestamp';
@@ -18,19 +14,3 @@ dashboardApp.controller('issuesController', ['$scope',  '$resource', function($s
 
 	console.log($scope.issuesResult);
 }])
-
-
-
-
-
-
-dashboardApp.directive("weatherReport", function(){
-	return {
-		restrict: 'E', 
-		templateUrl: 'directives/weatherReport.html', 
-		replace: true, 
-		scope: {
-			
-		}
-	}
-})

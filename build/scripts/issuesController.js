@@ -1,0 +1,1 @@
+dashboardApp.controller("issuesController",["$scope","$resource",function(s,e){s.orderByField="closed_timestamp",s.reverseSort=!1,s.issuesAPI=e("https://corporate-dashboard.firebaseio.com/issues.json",{get:{method:"JSON"}}),s.issuesResult=s.issuesAPI.query({});var o=s.issuesAPI.query({});console.log(o),console.log(s.issuesResult)}]);
