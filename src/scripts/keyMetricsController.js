@@ -1,4 +1,4 @@
-dashboardApp.controller('keyMetricsController',  [ '$scope', '$resource', '$routeParams', "$http", function($scope, $resource, $routeParams, $http){
+dashboardApp.controller('keyMetricsController',  [ '$scope', '$resource', '$routeParams', "$http", "$timeout", function($scope, $resource, $routeParams, $http, $timeout){
  //  	$scope.orderByField = 'closed_timestamp';
  //  	$scope.reverseSort = false;
 
@@ -17,18 +17,48 @@ dashboardApp.controller('keyMetricsController',  [ '$scope', '$resource', '$rout
 
   $scope.response = '';
 
-    $http.get("https://corporate-dashboard.firebaseio.com/key_metrics.json")
+  var poll = function() {
+        $timeout(function() {
+                 $http.get("https://corporate-dashboard.firebaseio.com/key_metrics.json")
     .then(function(response) {
+
+         $scope.customerArray = [];
+         $scope.dateArray = [];
+         $scope.reportedIssues = [];
 
         for (x in response.data){
 
-        	$scope.customerArray.push(response.data[x].number_of_paying_customers)
-        	$scope.dateArray.push(response.data[x].date);
+          $scope.customerArray.push(response.data[x].number_of_paying_customers)
+          $scope.dateArray.push(response.data[x].date);
           $scope.reportedIssues.push(response.data[x].reported_issues);
         }
 
         console.log($scope.customerArray)
-    });
+        console.log("Fetching Data");
+    });  
+            poll();
+        }, 100000);
+    };     
+  poll();
+
+
+
+     $http.get("https://corporate-dashboard.firebaseio.com/key_metrics.json")
+    .then(function(response) {
+
+        for (x in response.data){
+
+          $scope.customerArray.push(response.data[x].number_of_paying_customers)
+          $scope.dateArray.push(response.data[x].date);
+          $scope.reportedIssues.push(response.data[x].reported_issues);
+        }
+
+        console.log($scope.customerArray)
+        console.log("Fetching Data");
+    });   
+  // }
+
+
 
   $scope.myJson = {
     type: "line", 
