@@ -5,9 +5,7 @@ dashboardApp.controller("employeesController",function($scope,$http, $timeout){
 	    $http.get("https://corporate-dashboard.firebaseio.com/locations.json")
     .then(function(response) {
 
-
         for (x in response.data){
-
         	$scope.markers = response.data;
         }
     });

@@ -80,8 +80,18 @@ gulp.task('default', ['imagemin', 'htmlpage', 'scripts', 'styles'], function() {
     gulp.run('jshint', 'scripts');
   });
 
+  gulp.task('scripts', function() {
+  return gulp.src(['./src/scripts/*.js'])
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('./build/scripts/'));
+});
+
   // watch for CSS changes
   gulp.watch('./src/styles/*.css', function() {
     gulp.run('styles');
   });
+});
+
+gulp.task('apply-prod-environment', function() {
+    process.env.NODE_ENV = 'production';
 });
