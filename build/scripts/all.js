@@ -9,7 +9,7 @@ var dashboardApp = angular.module('dashboardApp', ['ngRoute', 'ngResource', 'zin
 
 
 
-dashboardApp.controller("employeesController",function($scope,$http, $timeout){
+dashboardApp.controller("employeesController",['$scope','$http', '$timeout',function($scope,$http, $timeout){
 
 	$scope.markers = '';
 
@@ -35,15 +35,16 @@ dashboardApp.controller("employeesController",function($scope,$http, $timeout){
     });
             poll();
         }, 10000);
-  };  
+  };
 
   poll();
 
-  $scope.map = { 
-    center: { latitude: 39.8282, longitude: -98.5795 }, 
+  $scope.map = {
+    center: { latitude: 39.8282, longitude: -98.5795 },
     zoom: 2
   };
-});
+}]);
+
 dashboardApp.controller('issuesController', ['$scope',  '$resource', "$timeout", function($scope, $resource, $timeout){
 
   	$scope.orderByField = 'closed_timestamp';
@@ -323,18 +324,18 @@ dashboardApp.controller('keyMetricsController',  [ '$scope', '$resource', '$rout
 };
 
 }])
-dashboardApp.config(function($routeProvider){
+dashboardApp.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/', {
-		templateUrl: '/assets/issues.htm', 
+		templateUrl: '/assets/issues.htm',
 		controller: 'issuesController'
 	})
 	.when('/keyMetrics', {
-		templateUrl: '/assets/key_metrics.htm', 
+		templateUrl: '/assets/key_metrics.htm',
 		controller: 'keyMetricsController'
 	})
 	.when('/employees', {
-		templateUrl: '/assets/employees.htm', 
+		templateUrl: '/assets/employees.htm',
 		controller: 'employeesController'
 	})
-})
+}])
